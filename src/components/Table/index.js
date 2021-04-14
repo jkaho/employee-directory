@@ -32,18 +32,23 @@ class Table extends Component {
         <table>
           <thead>
             <tr>
-              <th>Name</th>
-              <th>DOB</th>
-              <th>Address</th>
-              <th>Email</th>
-              <th>Mobile</th>
+              <th colSpan="2">Name</th>
+              <th rowSpan="2">DOB</th>
+              <th rowSpan="2">Address</th>
+              <th rowSpan="2">Email</th>
+              <th rowSpan="2">Mobile</th>
+            </tr>
+            <tr>
+              <th>First</th>
+              <th>Last</th>
             </tr>
           </thead>
           <tbody>
             {this.state.results.results ? (
               this.state.results.results.map(result => (
                 <TableRow 
-                  name={`${result.name.first} ${result.name.last}`}
+                  firstName={result.name.first}
+                  lastName={result.name.last}
                   dob={result.dob.date}
                   address={`${result.location.street.number} ${result.location.street.name} ${result.location.city} ${result.location.state} ${result.location.country}`}
                   email={result.email}
