@@ -13,15 +13,6 @@ class Table extends Component {
       .then(res => {
         this.setState({ results: res.data });
         console.log(this.state.results);
-        // this.state.results.results.map(result => {
-        //     console.log(result.name.first)
-        //     console.log(result.name.last)
-        //     console.log(result.dob.date)
-        //     console.log(result.dob.age)
-        //     console.log(`${result.location.street.number} ${result.location.street.name} ${result.location.city} ${result.location.state} ${result.location.country}`)
-        //     console.log(result.cell)
-        //     console.log(result.email)
-        // })
       })
       .catch(err => console.log(err))
   }
