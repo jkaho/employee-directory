@@ -5,6 +5,7 @@ import TableRow from "../TableRow";
 import "./style.css";
 
 let employees;
+let employeesToSort;
 
 class Table extends Component {
   state = {
@@ -19,6 +20,7 @@ class Table extends Component {
       .then(res => {
         this.setState({ results: res.data });
         employees = this.state.results;
+        employeesToSort = employees;
         console.log(this.state.results);
       })
       .catch(err => console.log(err))
@@ -101,11 +103,34 @@ class Table extends Component {
     document.querySelector("#age-select").value = "none";
   };
 
-  handleSortCatChange = event => {
+  handleSortChange = event => {
     const categoryToSort = event.target.value;
     this.setState({
       sortCategory: categoryToSort
     });
+    console.log(categoryToSort);
+  };
+
+  sortEmployeesAsc = () => {
+    console.log(this)
+    const category = this.state.sortCategory;
+    switch(category) {
+      case "firstName":
+        employeesToSort.results.sort((a, b) => a.name.first > b.name.first ? 1 : -1)
+        break;
+      case "lastName":
+        employeesToSort.results.sort((a, b) => a.name.last > b.name.last ? 1 : -1)
+        break;
+      default:
+        employeesToSort.results.sort(function(a, b) {
+          return new Date(b.dob.date) - new Date(a.dob.date);
+        });
+        break;
+    }
+
+    this.setState({
+      results: employeesToSort
+    })
   };
 
   render() {
@@ -116,6 +141,8 @@ class Table extends Component {
           handleAgeFilterChange={this.handleAgeFilterChange}
           filterEmployees={this.filterEmployees}
           removeFilter={this.removeFilter}
+          handleSortChange={this.handleSortChange}
+          sortEmployeesAsc={this.sortEmployeesAsc}
         />
         <table>
           <thead>

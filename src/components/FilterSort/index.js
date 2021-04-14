@@ -118,9 +118,10 @@ function FilterSort(props) {
         <Select
             type="sort"
             filterOptions={sortOptions}
+            handleFilterChange={props.handleSortChange}
         />
                 &nbsp;
-        <button id="asc-btn" className="sort-btn"><i className="fas fa-arrow-up"></i></button>
+        <button id="asc-btn" className="sort-btn" onClick={props.sortEmployeesAsc}><i className="fas fa-arrow-up"></i></button>
         &nbsp;
         <button id="desc-btn" className="sort-btn"><i className="fas fa-arrow-down"></i></button>
       </div>
