@@ -2,7 +2,6 @@ import React from "react";
 import Select from "../Select";
 import "./style.css";
 
-
 const stateFilterOptions = [
   {
     value: "none",
@@ -10,35 +9,35 @@ const stateFilterOptions = [
     disabled: true
   },
   {
-    value: "nsw",
+    value: "New South Wales",
     text: "New South Wales"
   },
   {
-    value: "vic",
+    value: "Victoria",
     text: "Victoria"
   },
   {
-    value: "qld",
+    value: "Queensland",
     text: "Queensland"
   },
   {
-    value: "wa",
+    value: "Western Australia",
     text: "Western Australia"
   },
   {
-    value: "sa",
+    value: "South Australia",
     text: "South Australia"
   },  
   {
-    value: "tas",
+    value: "Tasmania",
     text: "Tasmania"
   },
   {
-    value: "act",
+    value: "Australian Capital Territory",
     text: "Australian Capital Territory"
   },
   {
-    value: "nt",
+    value: "Northern Territory",
     text: "Northern Territory"
   },
 ]
@@ -50,23 +49,23 @@ const ageFilterOptions = [
     disabled: true
   },
   {
-    value: "group-20",
+    value: "0-29",
     text: "Under 30"
   },
   {
-    value: "group-30",
+    value: "30-39",
     text: "30-39"
   },
   {
-    value: "group-40",
+    value: "40-49",
     text: "40-49"
   },
   {
-    value: "group-50",
+    value: "50-59",
     text: "50-59"
   },
   {
-    value: "group-60",
+    value: "60-100",
     text: "Over 60"
   },
 ]
@@ -91,7 +90,7 @@ const sortOptions = [
   },
 ]
 
-function FilterSort() {
+function FilterSort(props) {
   return (
     <div className="sort-filter-div">
       <div className="filter-div">
@@ -100,14 +99,16 @@ function FilterSort() {
         <Select
           type="state"
           filterOptions={stateFilterOptions}
+          handleFilterChange={props.handleStateFilterChange}
         />
         &nbsp;
         <Select 
           type="age"
           filterOptions={ageFilterOptions}
+          handleFilterChange={props.handleAgeFilterChange}
         />
         &nbsp;
-        <button id="apply-filter-btn" className="sort-btn"><i className="fas fa-filter"></i></button>
+        <button id="apply-filter-btn" className="sort-btn" onClick={props.filterEmployees}><i className="fas fa-filter"></i></button>
         &nbsp;
         <button id="clear-filter-btn" className="sort-btn"><i className="fas fa-times"></i></button>
       </div>
