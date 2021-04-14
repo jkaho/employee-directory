@@ -1,0 +1,46 @@
+.sort-filter-div {
+  margin: 50px 50px 0 50px;
+  height: 40px;
+}
+
+.filter-div {
+  float: left;
+}
+
+.sort-div {
+  float: right;
+}
+
+.sort-select, .sort-btn {
+  height: 30px;
+  border-radius: 3px;
+}
+
+.sort-btn {
+  width: 30px;
+}
+
+.sort-btn {
+  background: white;
+  border: 1px solid grey;
+  cursor: pointer;
+}
+
+.sort-btn:hover {
+  background: rgb(0, 153, 255);
+  color: white;
+  border: 1px solid rgb(0, 153, 255);
+  outline: none;
+}
+
+#clear-filter-btn:hover {
+  background: rgb(199, 55, 36);
+  color: white;
+  border: 1px solid rgb(199, 55, 36);
+}
+
+#apply-filter-btn:hover {
+  background: rgb(49, 173, 97);
+  color: white;
+  border: 1px solid rgb(49, 173, 97);
+}
