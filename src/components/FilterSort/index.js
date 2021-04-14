@@ -110,7 +110,7 @@ function FilterSort(props) {
         &nbsp;
         <button id="apply-filter-btn" className="sort-btn" onClick={props.filterEmployees}><i className="fas fa-filter"></i></button>
         &nbsp;
-        <button id="clear-filter-btn" className="sort-btn"><i className="fas fa-times"></i></button>
+        <button id="clear-filter-btn" className="sort-btn" onClick={props.removeFilter}><i className="fas fa-times"></i></button>
       </div>
       <div className="sort-div">
         <span>Sort by </span>

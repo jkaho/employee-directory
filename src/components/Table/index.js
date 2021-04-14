@@ -43,30 +43,62 @@ class Table extends Component {
     if (employees.results) {
       const stateFilter = this.state.stateFilter;
       const filteredEmployeesByState = employees.results.filter(employee => employee.location.state === stateFilter);
-      console.log(filteredEmployeesByState)
       const ageFilterSplit = this.state.ageFilter.split("-");
       const ageFilterMin = parseInt(ageFilterSplit[0]);
       const ageFilterMax = parseInt(ageFilterSplit[1]);
       let filteredEmployeesByAge = [];
-      if (stateFilter === "none") {
-        filteredEmployeesByAge = employees.results.filter(employee => employee.dob.age >= ageFilterMin && employee.dob.age <= ageFilterMax);
+      let results;
+
+      if (stateFilter === "" && this.state.ageFilter === "") {
+        return;
+      }
+
+      if (stateFilter === "") {
+        console.log("no state")
+        employees.results.forEach(employee => {
+          if (employee.dob.age >= ageFilterMin && employee.dob.age <= ageFilterMax) {
+            filteredEmployeesByAge.push(employee);
+          }
+        });
+
+        results = {
+          results: filteredEmployeesByAge
+        }
+        // filteredEmployeesByAge = employees.results.filter(employee => employee.dob.age >= ageFilterMin && employee.dob.age <= ageFilterMax);
+      } else if (this.state.ageFilter === "") {
+        console.log("no age")
+        results = {
+          results: filteredEmployeesByState
+        }
       } else {
+        console.log("both!")
+        console.log(this.state.ageFilter)
         filteredEmployeesByState.forEach(employee => {
           if (employee.dob.age >= ageFilterMin && employee.dob.age <= ageFilterMax) {
             filteredEmployeesByAge.push(employee);
           }
         });
+        results = {
+          results: filteredEmployeesByAge
+        }
         // filteredEmployeesByAge = filteredEmployeesByState.filter(employee => employee.dob.age >= ageFilterMin && employee.dob.age <= ageFilterMax);
-      }
-
-      const results = {
-        results: filteredEmployeesByAge
       }
 
       this.setState({
         results: results
       });
     }
+  };
+
+  removeFilter = () => {
+    this.setState({
+      results: employees,
+      stateFilter: "",
+      ageFilter: ""
+    });
+
+    document.querySelector("#state-select").value = "none";
+    document.querySelector("#age-select").value = "none";
   };
 
   handleSortCatChange = event => {
@@ -83,6 +115,7 @@ class Table extends Component {
           handleStateFilterChange={this.handleStateFilterChange}
           handleAgeFilterChange={this.handleAgeFilterChange}
           filterEmployees={this.filterEmployees}
+          removeFilter={this.removeFilter}
         />
         <table>
           <thead>
