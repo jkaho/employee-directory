@@ -5,11 +5,11 @@ import TableRow from "../TableRow";
 import "./style.css";
 
 let employees;
-let employeesToSort;
 
 class Table extends Component {
   state = {
-    results: [],
+    results: {},
+    sortedResults: {},
     stateFilter: "",
     ageFilter: "",
     sortCategory: ""
@@ -20,7 +20,6 @@ class Table extends Component {
       .then(res => {
         this.setState({ results: res.data });
         employees = this.state.results;
-        employeesToSort = employees;
         console.log(this.state.results);
       })
       .catch(err => console.log(err))
@@ -56,7 +55,6 @@ class Table extends Component {
       }
 
       if (stateFilter === "") {
-        console.log("no state")
         employees.results.forEach(employee => {
           if (employee.dob.age >= ageFilterMin && employee.dob.age <= ageFilterMax) {
             filteredEmployeesByAge.push(employee);
@@ -68,12 +66,10 @@ class Table extends Component {
         }
         // filteredEmployeesByAge = employees.results.filter(employee => employee.dob.age >= ageFilterMin && employee.dob.age <= ageFilterMax);
       } else if (this.state.ageFilter === "") {
-        console.log("no age")
         results = {
           results: filteredEmployeesByState
         }
       } else {
-        console.log("both!")
         console.log(this.state.ageFilter)
         filteredEmployeesByState.forEach(employee => {
           if (employee.dob.age >= ageFilterMin && employee.dob.age <= ageFilterMax) {
@@ -87,7 +83,8 @@ class Table extends Component {
       }
 
       this.setState({
-        results: results
+        results: results,
+        filtered: true
       });
     }
   };
@@ -96,11 +93,13 @@ class Table extends Component {
     this.setState({
       results: employees,
       stateFilter: "",
-      ageFilter: ""
+      ageFilter: "",
+      filtered: false
     });
 
     document.querySelector("#state-select").value = "none";
     document.querySelector("#age-select").value = "none";
+    document.querySelector("#sort-select").value = "none";
   };
 
   handleSortChange = event => {
@@ -108,29 +107,82 @@ class Table extends Component {
     this.setState({
       sortCategory: categoryToSort
     });
-    console.log(categoryToSort);
   };
 
   sortEmployeesAsc = () => {
-    console.log(this)
     const category = this.state.sortCategory;
+    if (category === "") {
+      return;
+    }
+    // if (this.state.filtered) {
+      switch(category) {
+        case "firstName":
+          this.state.results.results.sort((a, b) => a.name.first > b.name.first ? 1 : -1)
+          break;
+        case "lastName":
+          this.state.results.results.sort((a, b) => a.name.last > b.name.last ? 1 : -1)
+          break;
+        default:
+          this.state.results.results.sort(function(a, b) {
+            return new Date(b.dob.date) - new Date(a.dob.date);
+          });
+          break;
+      }
+    // } else {
+    //   switch(category) {
+    //     case "firstName":
+    //       employeesToSort.results.sort((a, b) => a.name.first > b.name.first ? 1 : -1)
+    //       break;
+    //     case "lastName":
+    //       employeesToSort.results.sort((a, b) => a.name.last > b.name.last ? 1 : -1)
+    //       break;
+    //     default:
+    //       employeesToSort.results.sort(function(a, b) {
+    //         return new Date(b.dob.date) - new Date(a.dob.date);
+    //       });
+    //       break;
+    //   }
+    // }
+
+    this.setState({
+      results: this.state.results
+    })
+  };
+
+  sortEmployeesDesc = () => {
+    const category = this.state.sortCategory;
+    if (category === "") {
+      return;
+    }
+
     switch(category) {
       case "firstName":
-        employeesToSort.results.sort((a, b) => a.name.first > b.name.first ? 1 : -1)
+        this.state.results.results.sort((a, b) => b.name.first > a.name.first ? 1 : -1)
         break;
       case "lastName":
-        employeesToSort.results.sort((a, b) => a.name.last > b.name.last ? 1 : -1)
+        this.state.results.results.sort((a, b) => b.name.last > a.name.last ? 1 : -1)
         break;
       default:
-        employeesToSort.results.sort(function(a, b) {
-          return new Date(b.dob.date) - new Date(a.dob.date);
+        this.state.results.results.sort(function(a, b) {
+          return new Date(a.dob.date) - new Date(b.dob.date);
         });
         break;
     }
 
     this.setState({
-      results: employeesToSort
+      results: this.state.results
     })
+  };
+
+  removeSort = () => {
+    this.setState({
+      results: employees,
+      sortCategory: ""
+    });
+    console.log(employees)
+    console.log(this.state.results)
+
+    document.querySelector("#sort-select").value = "none";
   };
 
   render() {
@@ -143,6 +195,8 @@ class Table extends Component {
           removeFilter={this.removeFilter}
           handleSortChange={this.handleSortChange}
           sortEmployeesAsc={this.sortEmployeesAsc}
+          sortEmployeesDesc={this.sortEmployeesDesc}
+          removeSort={this.removeSort}
         />
         <table>
           <thead>

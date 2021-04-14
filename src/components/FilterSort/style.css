@@ -1,5 +1,5 @@
 .sort-filter-div {
-  margin: 50px 50px 0 50px;
+  margin: 30px 50px 0 50px;
   height: 40px;
 }
 
@@ -33,7 +33,7 @@
   outline: none;
 }
 
-#clear-filter-btn:hover {
+#clear-filter-btn:hover, #clear-sort-btn:hover {
   background: rgb(199, 55, 36);
   color: white;
   border: 1px solid rgb(199, 55, 36);
