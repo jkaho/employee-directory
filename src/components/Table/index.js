@@ -222,15 +222,16 @@ class Table extends Component {
         <table>
           <thead>
             <tr>
-              <th colSpan="2">Name</th>
+              <th colSpan="2">NAME</th>
+              <th rowSpan="2">PHOTO</th>
               <th rowSpan="2">DOB</th>
-              <th rowSpan="2">Address</th>
-              <th rowSpan="2">Email</th>
-              <th rowSpan="2">Mobile</th>
+              <th rowSpan="2">ADDRESS</th>
+              <th rowSpan="2">EMAIL</th>
+              <th rowSpan="2">MOBILE</th>
             </tr>
             <tr>
-              <th>First</th>
-              <th>Last</th>
+              <th>FIRST</th>
+              <th>LAST</th>
             </tr>
           </thead>
           <tbody>
@@ -238,6 +239,7 @@ class Table extends Component {
             {this.state.results.results ? (
               this.state.results.results.map(result => (
                 <TableRow 
+                  image={result.picture.medium}
                   firstName={result.name.first}
                   lastName={result.name.last}
                   dob={result.dob.date}

@@ -5,8 +5,9 @@ import "./style.css";
 function TableRow(props) {
   return (
     <tr>
-      <td>{props.firstName}</td>
-      <td>{props.lastName}</td>
+      <td className="name-td">{props.firstName}</td>
+      <td className="name-td lastName">{props.lastName}</td>
+      <td className="img-td"><img src={props.image} alt={`Employee: ${props.firstName} ${props.lastName}`}></img></td>
       <td>{moment(props.dob).format("D/MM/YYYY")}</td>
       <td>{props.address}</td>
       <td>{props.email}</td>

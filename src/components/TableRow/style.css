@@ -5,3 +5,19 @@ tr {
 td {
   padding: 5px;
 }
+
+.img-td {
+  text-align: center;
+  width: 72px;
+  height: 72px;
+  padding-bottom: 0;
+}
+
+.name-td {
+  text-align: center;
+  font-weight: 500;
+}
+
+.lastName {
+  text-transform: uppercase;
+}

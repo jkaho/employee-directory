@@ -1,4 +1,5 @@
 .sort-filter-div {
+  font-family: 'Roboto', sans-serif;
   margin: 30px auto;
   margin-bottom: 0;
   height: 40px;
@@ -15,6 +16,7 @@
 }
 
 .sort-select, .sort-btn {
+  font-family: 'Roboto', sans-serif;
   height: 30px;
   border-radius: 3px;
 }
