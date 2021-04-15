@@ -5,7 +5,6 @@ import TableRow from "../TableRow";
 import "./style.css";
 
 let employees;
-let unsortedEmployees = {};
 
 class Table extends Component {
   state = {
@@ -21,9 +20,6 @@ class Table extends Component {
       .then(res => {
         this.setState({ results: res.data });
         employees = this.state.results;
-        if (unsortedEmployees === {}) {
-          unsortedEmployees = employees;
-        }
         console.log(this.state.results);
       })
       .catch(err => console.log(err))
@@ -152,7 +148,7 @@ class Table extends Component {
     const sortedResults = {
       results: sorted
     }
-    
+
     this.setState({
       results: sortedResults
     })

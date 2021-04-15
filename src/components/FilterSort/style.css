@@ -1,4 +1,4 @@
-.sort-filter-div {
+.search-sort-filter-div {
   font-family: 'Roboto', sans-serif;
   margin: 30px auto;
   margin-bottom: 0;
@@ -7,12 +7,20 @@
   max-width: 1250px;
 }
 
-.filter-div {
+/* .filter-div {
   float: left;
 }
 
 .sort-div {
   float: right;
+} */
+
+.sort-filter-div {
+  float: right;
+}
+
+.filter-div, .sort-div {
+  display: inline-block;
 }
 
 .sort-select, .sort-btn {

@@ -1,4 +1,5 @@
 import React from "react";
+import SearchBar from "../SearchBar";
 import Select from "../Select";
 import "./style.css";
 
@@ -92,7 +93,9 @@ const sortOptions = [
 
 function FilterSort(props) {
   return (
-    <div className="sort-filter-div">
+    <div className="search-sort-filter-div">
+      <SearchBar />
+      <div className="sort-filter-div">
       <div className="filter-div">
         <span>Filter by </span>
         &nbsp;
@@ -112,6 +115,7 @@ function FilterSort(props) {
         &nbsp;
         <button id="clear-filter-btn" className="sort-btn" onClick={props.removeFilter}><i className="fas fa-times"></i></button>
       </div>
+      &nbsp;&nbsp;&nbsp;&nbsp;
       <div className="sort-div">
         <span>Sort by </span>
         &nbsp;
@@ -126,6 +130,7 @@ function FilterSort(props) {
         <button id="desc-btn" className="sort-btn" onClick={props.sortEmployeesDesc}><i className="fas fa-arrow-down"></i></button>
         &nbsp;
         <button id="clear-sort-btn" className="sort-btn" onClick={props.removeSort}><i className="fas fa-times"></i></button>
+      </div>
       </div>
     </div>
   )
