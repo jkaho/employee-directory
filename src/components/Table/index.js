@@ -5,6 +5,7 @@ import TableRow from "../TableRow";
 import "./style.css";
 
 let employees;
+let unsortedEmployees = {};
 
 class Table extends Component {
   state = {
@@ -20,6 +21,9 @@ class Table extends Component {
       .then(res => {
         this.setState({ results: res.data });
         employees = this.state.results;
+        if (unsortedEmployees === {}) {
+          unsortedEmployees = employees;
+        }
         console.log(this.state.results);
       })
       .catch(err => console.log(err))
@@ -111,19 +115,21 @@ class Table extends Component {
 
   sortEmployeesAsc = () => {
     const category = this.state.sortCategory;
+    const results = this.state.results.results;
+    let sorted;
     if (category === "") {
       return;
     }
     // if (this.state.filtered) {
       switch(category) {
         case "firstName":
-          this.state.results.results.sort((a, b) => a.name.first > b.name.first ? 1 : -1)
+          sorted = [...results].sort((a, b) => a.name.first > b.name.first ? 1 : -1)
           break;
         case "lastName":
-          this.state.results.results.sort((a, b) => a.name.last > b.name.last ? 1 : -1)
+          sorted = [...results].sort((a, b) => a.name.last > b.name.last ? 1 : -1)
           break;
         default:
-          this.state.results.results.sort(function(a, b) {
+          sorted = [...results].sort(function(a, b) {
             return new Date(b.dob.date) - new Date(a.dob.date);
           });
           break;
@@ -143,34 +149,43 @@ class Table extends Component {
     //       break;
     //   }
     // }
-
+    const sortedResults = {
+      results: sorted
+    }
+    
     this.setState({
-      results: this.state.results
+      results: sortedResults
     })
   };
 
   sortEmployeesDesc = () => {
     const category = this.state.sortCategory;
+    const results = this.state.results.results;
+    let sorted;
     if (category === "") {
       return;
     }
 
     switch(category) {
       case "firstName":
-        this.state.results.results.sort((a, b) => b.name.first > a.name.first ? 1 : -1)
+        sorted = [...results].sort((a, b) => b.name.first > a.name.first ? 1 : -1)
         break;
       case "lastName":
-        this.state.results.results.sort((a, b) => b.name.last > a.name.last ? 1 : -1)
+        sorted = [...results].sort((a, b) => b.name.last > a.name.last ? 1 : -1)
         break;
       default:
-        this.state.results.results.sort(function(a, b) {
+        sorted = [...results].sort(function(a, b) {
           return new Date(a.dob.date) - new Date(b.dob.date);
         });
         break;
     }
 
+    const sortedResults = {
+      results: sorted
+    }
+  
     this.setState({
-      results: this.state.results
+      results: sortedResults
     })
   };
 
@@ -251,7 +266,7 @@ class Table extends Component {
               ))
             ) : (
               <tr>
-                <td colSpan="6">No employees to display</td>
+                <td colSpan="7">No employees to display</td>
               </tr>
             )}
           </tbody>
