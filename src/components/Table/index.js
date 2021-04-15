@@ -185,6 +185,27 @@ class Table extends Component {
     document.querySelector("#sort-select").value = "none";
   };
 
+  abbrievateState = (stateName) => {
+    switch(stateName) {
+      case "New South Wales":
+        return "NSW";
+      case "Victoria":
+        return "VIC";
+      case "Queensland":
+        return "QLD";
+      case "Western Australia":
+        return "WA";
+      case "South Australia":
+        return "SA";
+      case "Tasmania":
+        return "TAS";
+      case "Australian Capital Territory":
+        return "ACT";
+      default:
+        return "NT";
+    }
+  };
+
   render() {
     return (
       <div>
@@ -220,7 +241,7 @@ class Table extends Component {
                   firstName={result.name.first}
                   lastName={result.name.last}
                   dob={result.dob.date}
-                  address={`${result.location.street.number} ${result.location.street.name} ${result.location.city} ${result.location.state} ${result.location.country}`}
+                  address={`${result.location.street.number} ${result.location.street.name}, ${result.location.city}, ${this.abbrievateState(result.location.state)}`}
                   email={result.email}
                   phone={result.cell}
                   key={`key-${this.state.results.results.indexOf(result)}`}

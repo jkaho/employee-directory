@@ -1,6 +1,9 @@
 .sort-filter-div {
-  margin: 30px 50px 0 50px;
+  margin: 30px auto;
+  margin-bottom: 0;
   height: 40px;
+  width: 80%;
+  max-width: 1250px;
 }
 
 .filter-div {
