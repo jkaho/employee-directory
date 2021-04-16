@@ -11,6 +11,10 @@ table {
   max-width: 1250px;
 }
 
+mark {
+  background: yellow;
+}
+
 td, th {
   padding: 5px;
   border: 1px solid rgb(226, 226, 226);

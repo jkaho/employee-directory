@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import Mark from "mark.js";
 import API from "../../utils/API";
 import FilterSort from "../FilterSort";
 import TableRow from "../TableRow";
@@ -27,23 +28,36 @@ class Table extends Component {
   };
 
   handleNameSearch = event => {
+    this.setState({search: event.target.value.trim()}, () => {
+      this.markInstance = new Mark(document.querySelectorAll(".name-td"));
+      this.markInstance.unmark({
+        done: () => {
+          this.markInstance.mark(this.state.search)
+        }
+      });
+    });
+
     const search = event.target.value.trim();
-    console.log(search)
     if (search !== "" && this.state.results) {
-      const searchResults = [];
+      let searchResults = [];
       employees.results.forEach(result => {
-        const fullname = `${result.name.first}${result.name.last}`;
+        const fullname = `${result.name.first} ${result.name.last}`;
         if (fullname.toLowerCase().includes(search)) {
           searchResults.push(result);
-          console.log(result)
         }
       });
 
       const searchResultsObject = {
         results: searchResults
-      }
+      };
 
-      console.log(searchResultsObject)
+      if (searchResults.length < 1) {
+        this.setState({
+          results: { results: false }
+        });
+        
+        return;
+      }
 
       this.setState({
         results: searchResultsObject
@@ -54,6 +68,14 @@ class Table extends Component {
         results: employees
       })
     }
+  };
+
+  highlightSearchTerms = (term, node) => {
+    let instance = new Mark(node);
+    instance.mark(term, {
+      separateWordSearch: true,
+      accuracy: "exactly"
+    });
   };
 
   handleStateFilterChange = event => {
@@ -147,35 +169,21 @@ class Table extends Component {
     if (category === "") {
       return;
     }
-    // if (this.state.filtered) {
-      switch(category) {
-        case "firstName":
-          sorted = [...results].sort((a, b) => a.name.first > b.name.first ? 1 : -1)
-          break;
-        case "lastName":
-          sorted = [...results].sort((a, b) => a.name.last > b.name.last ? 1 : -1)
-          break;
-        default:
-          sorted = [...results].sort(function(a, b) {
-            return new Date(b.dob.date) - new Date(a.dob.date);
-          });
-          break;
-      }
-    // } else {
-    //   switch(category) {
-    //     case "firstName":
-    //       employeesToSort.results.sort((a, b) => a.name.first > b.name.first ? 1 : -1)
-    //       break;
-    //     case "lastName":
-    //       employeesToSort.results.sort((a, b) => a.name.last > b.name.last ? 1 : -1)
-    //       break;
-    //     default:
-    //       employeesToSort.results.sort(function(a, b) {
-    //         return new Date(b.dob.date) - new Date(a.dob.date);
-    //       });
-    //       break;
-    //   }
-    // }
+
+    switch(category) {
+      case "firstName":
+        sorted = [...results].sort((a, b) => a.name.first > b.name.first ? 1 : -1)
+        break;
+      case "lastName":
+        sorted = [...results].sort((a, b) => a.name.last > b.name.last ? 1 : -1)
+        break;
+      default:
+        sorted = [...results].sort(function(a, b) {
+          return new Date(b.dob.date) - new Date(a.dob.date);
+        });
+        break;
+    }
+
     const sortedResults = {
       results: sorted
     }
@@ -277,8 +285,7 @@ class Table extends Component {
               <th>LAST</th>
             </tr>
           </thead>
-          <tbody>
-            {console.log(this.state.results)}
+          <tbody className="search-results">
             {this.state.results.results ? (
               this.state.results.results.map(result => (
                 <TableRow 
