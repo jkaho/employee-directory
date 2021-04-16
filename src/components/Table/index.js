@@ -12,7 +12,8 @@ class Table extends Component {
     sortedResults: {},
     stateFilter: "",
     ageFilter: "",
-    sortCategory: ""
+    sortCategory: "",
+    search: ""
   }
 
   componentDidMount() {
@@ -23,6 +24,36 @@ class Table extends Component {
         console.log(this.state.results);
       })
       .catch(err => console.log(err))
+  };
+
+  handleNameSearch = event => {
+    const search = event.target.value.trim();
+    console.log(search)
+    if (search !== "" && this.state.results) {
+      const searchResults = [];
+      employees.results.forEach(result => {
+        const fullname = `${result.name.first}${result.name.last}`;
+        if (fullname.toLowerCase().includes(search)) {
+          searchResults.push(result);
+          console.log(result)
+        }
+      });
+
+      const searchResultsObject = {
+        results: searchResults
+      }
+
+      console.log(searchResultsObject)
+
+      this.setState({
+        results: searchResultsObject
+      });
+
+    } else {
+      this.setState({
+        results: employees
+      })
+    }
   };
 
   handleStateFilterChange = event => {
@@ -221,6 +252,7 @@ class Table extends Component {
     return (
       <div>
         <FilterSort
+          handleNameSearch={this.handleNameSearch}
           handleStateFilterChange={this.handleStateFilterChange}
           handleAgeFilterChange={this.handleAgeFilterChange}
           filterEmployees={this.filterEmployees}

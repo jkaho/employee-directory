@@ -94,7 +94,9 @@ const sortOptions = [
 function FilterSort(props) {
   return (
     <div className="search-sort-filter-div">
-      <SearchBar />
+      <SearchBar
+        handleNameSearch={props.handleNameSearch}
+      />
       <div className="sort-filter-div">
       <div className="filter-div">
         <span>Filter by </span>
