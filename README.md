@@ -33,15 +33,15 @@ This application is also mobile-friendly for user convenience and accessibility.
 
 ## Large viewport 
 
-[Screenshot of Employee Tracker on a large viewport (desktop)](public/images/viewport-lg.png)
+![Screenshot of Employee Tracker on a large viewport (desktop)](public/images/viewport-lg.png)
 
 ## Medium viewport 
 
-[Screenshot of Employee Tracker on a medium viewport (iPad)](public/images/viewport-md.png)
+![Screenshot of Employee Tracker on a medium viewport (iPad)](public/images/viewport-md.png)
 
 ## Large viewport 
 
-[Screenshot of Employee Tracker on a small viewport (iPhone)](public/images/viewport-sm.png)
+![Screenshot of Employee Tracker on a small viewport (iPhone)](public/images/viewport-sm.png)
 
 ## Link
 
