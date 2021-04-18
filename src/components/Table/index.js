@@ -5,6 +5,7 @@ import FilterSort from "../FilterSort";
 import TableRow from "../TableRow";
 import "./style.css";
 
+// Store initial object of random list of employees 
 let employees;
 
 class Table extends Component {
@@ -17,6 +18,7 @@ class Table extends Component {
     search: ""
   }
 
+  // Grab random employees upon mounting React component
   componentDidMount() {
     API.getRandomEmployees()
       .then(res => {
@@ -27,6 +29,7 @@ class Table extends Component {
       .catch(err => console.log(err))
   };
 
+  // Check first & last names for search matches, use Mark.js to highlight matches
   handleNameSearch = event => {
     this.setState({search: event.target.value.trim()}, () => {
       this.markInstance = new Mark(document.querySelectorAll(".name-td"));
@@ -70,14 +73,7 @@ class Table extends Component {
     }
   };
 
-  highlightSearchTerms = (term, node) => {
-    let instance = new Mark(node);
-    instance.mark(term, {
-      separateWordSearch: true,
-      accuracy: "exactly"
-    });
-  };
-
+  // Update state of state/territory select element
   handleStateFilterChange = event => {
     const stateToFilter = event.target.value;
     this.setState({
@@ -85,6 +81,7 @@ class Table extends Component {
     });
   };
 
+  // Update state of age group select element
   handleAgeFilterChange = event => {
     const ageToFilter = event.target.value;
     this.setState({
@@ -92,6 +89,7 @@ class Table extends Component {
     });
   };
 
+  // Handle filter button click 
   filterEmployees = event => {
     event.preventDefault();
     if (employees.results) {
@@ -123,12 +121,12 @@ class Table extends Component {
           results: filteredEmployeesByState
         }
       } else {
-        console.log(this.state.ageFilter)
         filteredEmployeesByState.forEach(employee => {
           if (employee.dob.age >= ageFilterMin && employee.dob.age <= ageFilterMax) {
             filteredEmployeesByAge.push(employee);
           }
         });
+
         results = {
           results: filteredEmployeesByAge
         }
@@ -142,6 +140,7 @@ class Table extends Component {
     }
   };
 
+  // Handle remove filter button click
   removeFilter = () => {
     this.setState({
       results: employees,
@@ -155,6 +154,7 @@ class Table extends Component {
     document.querySelector("#sort-select").value = "none";
   };
 
+  // Update state of sort category select element
   handleSortChange = event => {
     const categoryToSort = event.target.value;
     this.setState({
@@ -162,6 +162,7 @@ class Table extends Component {
     });
   };
 
+  // Handle ascending button click
   sortEmployeesAsc = () => {
     const category = this.state.sortCategory;
     const results = this.state.results.results;
@@ -193,6 +194,7 @@ class Table extends Component {
     })
   };
 
+  // Handle descending button click
   sortEmployeesDesc = () => {
     const category = this.state.sortCategory;
     const results = this.state.results.results;
@@ -224,6 +226,7 @@ class Table extends Component {
     })
   };
 
+  // Handle un-sort button click 
   removeSort = () => {
     this.setState({
       results: employees,
@@ -235,6 +238,7 @@ class Table extends Component {
     document.querySelector("#sort-select").value = "none";
   };
 
+  // Responsive design: handle left arrow click to view data for prev table column
   handleLeftBtn = event => {
     event.stopPropagation();
     const currentHeading = event.target.parentElement.classList[0];
@@ -272,6 +276,7 @@ class Table extends Component {
     });
   }
 
+  // Responsive design: handle right arrow click to view data for next table column
   handleRightBtn = event => {
     event.stopPropagation();
     const currentHeading = event.target.parentElement.classList[0];
@@ -309,6 +314,7 @@ class Table extends Component {
     });
   }
 
+  // Abbreviate Australian state names to display on table
   abbrievateState = (stateName) => {
     switch(stateName) {
       case "New South Wales":
@@ -404,24 +410,3 @@ class Table extends Component {
 };
 
 export default Table;
-
-// Table headings
-// const nameTh = document.querySelector(".name-th");
-// const firstTh = document.querySelector(".first-th");
-// const lastTh = document.querySelector(".last-th");
-// const imgTh = document.querySelector(".img-th");
-// const dobTh = document.querySelector(".dob-th");
-// const addressTh = document.querySelector(".address-th");
-// const emailTh = document.querySelector(".email-th");
-// const phoneTh = document.querySelector(".phone-th");
-
-// Responsive table headings
-// const nameThMobile = document.querySelector(".name-th-m");
-// const firstThMobile = document.querySelector(".first-th-m");
-// const lastThMobile = document.querySelector(".last-th-m");
-// const imgThMobile = document.querySelector(".img-th-m");
-// const dobThMobile = document.querySelector(".dob-th-m");
-// const addressThMobile = document.querySelector(".address-th-m");
-// const emailThMobile = document.querySelector(".email-th-m");
-// const phoneThMobile = document.querySelector(".phone-th-m");
-

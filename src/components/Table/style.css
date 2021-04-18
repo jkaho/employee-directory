@@ -4,12 +4,8 @@ table {
   margin: 0 auto;
   margin-bottom: 50px;
   border: 1px solid rgb(255, 223, 194);
-  width: 80%;
+  width: 85%;
   max-width: 1250px;
-}
-
-mark {
-  background: yellow;
 }
 
 td, th {
@@ -48,11 +44,16 @@ tr td:last-child, tr th:last-child {
   display: none;
   border: none;
   background: none;
-  color: white;
+  color: rgb(255, 255, 255);
   cursor: pointer;
 }
 
+/* Mark.js highlight colour*/
+mark {
+  background: rgb(255, 171, 45);
+}
 
+/* ------- MEDIA QUERIES ------- */
 @media (max-width: 950px) {
   th, td {
     font-size: 13px;
@@ -69,10 +70,6 @@ tr td:last-child, tr th:last-child {
     overflow-y: auto;
   }
 
-  /* .th {
-    display: none;
-  } */
-
   .hide-th, .hide-td {
     display: none;
   }
@@ -83,11 +80,20 @@ tr td:last-child, tr th:last-child {
     color: white;
   }
 
+  th, td {
+    font-size: 12px;
+  }
+
+  th {
+    padding-left: 0;
+    padding-right: 0;
+  }
+
   .th-btn {
     display: inline-block;
   }
 
   .first-th, .last-th {
-    top: 26px;
+    top: 25px;
   }
 }
