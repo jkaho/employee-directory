@@ -3,10 +3,7 @@ table {
   font-family: 'Roboto', sans-serif;
   margin: 0 auto;
   margin-bottom: 50px;
-  border: 1px solid rgb(226, 226, 226);
-  /* border-left: none;
-  border-right: none; */
-  border-radius: 5px;
+  border: 1px solid rgb(255, 223, 194);
   width: 80%;
   max-width: 1250px;
 }
@@ -17,12 +14,13 @@ mark {
 
 td, th {
   padding: 5px;
-  border: 1px solid rgb(226, 226, 226);
+  border: 1px solid rgb(255, 223, 194);
 }
 
 th {
   font-size: 14px;
-  color: rgb(58, 58, 58);
+  color: rgb(255, 255, 255);
+  background: rgb(250, 145, 48);
 }
 
 td {
@@ -43,4 +41,57 @@ tr td:first-child, tr th:first-child {
 
 tr td:last-child, tr th:last-child {
   border-right: 0;
+}
+
+/* Left/right mobile th buttons */
+.th-btn {
+  display: none;
+  border: none;
+  background: none;
+  color: white;
+  cursor: pointer;
+}
+
+
+@media (max-width: 950px) {
+  th, td {
+    font-size: 13px;
+  }
+}
+
+@media (max-width: 550px) {
+  table {
+    width: 95%;
+  }
+
+  .table-div {
+    max-height: 100vh;
+    overflow-y: auto;
+  }
+
+  /* .th {
+    display: none;
+  } */
+
+  .address-th, .email-th, .phone-th {
+    display: none;
+  }
+
+  .th {
+    position: sticky;
+    top: 0;
+    color: white;
+  }
+
+  .th-btn {
+    display: inline-block;
+  }
+
+  .first-th, .last-th {
+    top: 26px;
+  }
+
+  .address-td, .email-td, .phone-td {
+    display: none;
+  }
 }

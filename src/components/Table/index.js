@@ -55,7 +55,7 @@ class Table extends Component {
         this.setState({
           results: { results: false }
         });
-        
+
         return;
       }
 
@@ -270,45 +270,102 @@ class Table extends Component {
           sortEmployeesDesc={this.sortEmployeesDesc}
           removeSort={this.removeSort}
         />
-        <table>
-          <thead>
+        {/* <div className="mobile-th">
+          <table className="mobile-table">
+            <thead>
             <tr>
-              <th colSpan="2">NAME</th>
-              <th rowSpan="2">PHOTO</th>
-              <th rowSpan="2">DOB</th>
-              <th rowSpan="2">ADDRESS</th>
-              <th rowSpan="2">EMAIL</th>
-              <th rowSpan="2">MOBILE</th>
-            </tr>
-            <tr>
-              <th>FIRST</th>
-              <th>LAST</th>
-            </tr>
-          </thead>
-          <tbody className="search-results">
-            {this.state.results.results ? (
-              this.state.results.results.map(result => (
-                <TableRow 
-                  image={result.picture.medium}
-                  firstName={result.name.first}
-                  lastName={result.name.last}
-                  dob={result.dob.date}
-                  address={`${result.location.street.number} ${result.location.street.name}, ${result.location.city}, ${this.abbrievateState(result.location.state)}`}
-                  email={result.email}
-                  phone={result.cell}
-                  key={`key-${this.state.results.results.indexOf(result)}`}
-                />
-              ))
-            ) : (
-              <tr>
-                <td colSpan="7">No employees to display</td>
+                <th className="name-th-m" colSpan="2">NAME</th>
+                <th className="img-th-m" rowSpan="2">PHOTO</th>
+                <th className="dob-th-m" rowSpan="2">DOB</th>
+                <th className="address-th-m" rowSpan="2">ADDRESS</th>
+                <th className="email-th-m" rowSpan="2">EMAIL</th>
+                <th className="phone-th-m" rowSpan="2">MOBILE</th>
               </tr>
-            )}
-          </tbody>
-        </table>
+              <tr>
+                <th className="first-th-m">FIRST</th>
+                <th className="last-th-m">LAST</th>
+              </tr>
+            </thead>
+          </table>
+        </div> */}
+        <div className="table-div">
+          <table className="employee-table">
+            <thead>
+              <tr>
+                <th className="name-th th" colSpan="2">NAME</th>
+                <th className="img-th th" rowSpan="2">PHOTO</th>
+                <th className="dob-th th" rowSpan="2">
+                  <button className="th-btn"><i className="fas fa-chevron-left"></i></button>
+                  DOB
+                  <button className="th-btn"><i className="fas fa-chevron-right"></i></button>
+                </th>
+                <th className="address-th th" rowSpan="2">
+                  <button className="th-btn"><i className="fas fa-chevron-left"></i></button>
+                  ADDRESS
+                  <button className="th-btn"><i className="fas fa-chevron-right"></i></button>
+                </th>
+                <th className="email-th th" rowSpan="2">
+                  <button className="th-btn"><i className="fas fa-chevron-left"></i></button>
+                  EMAIL
+                  <button className="th-btn"><i className="fas fa-chevron-right"></i></button>
+                </th>
+                <th className="phone-th th" rowSpan="2">
+                  <button className="th-btn"><i className="fas fa-chevron-left"></i></button>
+                  MOBILE
+                  <button className="th-btn"><i className="fas fa-chevron-right"></i></button>
+                </th>
+              </tr>
+              <tr>
+                <th className="first-th th">FIRST</th>
+                <th className="last-th th">LAST</th>
+              </tr>
+            </thead>
+            <tbody className="search-results">
+              {this.state.results.results ? (
+                this.state.results.results.map(result => (
+                  <TableRow 
+                    image={result.picture.medium}
+                    firstName={result.name.first}
+                    lastName={result.name.last}
+                    dob={result.dob.date}
+                    address={`${result.location.street.number} ${result.location.street.name}, ${result.location.city}, ${this.abbrievateState(result.location.state)}`}
+                    email={result.email}
+                    phone={result.cell}
+                    key={`key-${this.state.results.results.indexOf(result)}`}
+                  />
+                ))
+              ) : (
+                <tr>
+                  <td colSpan="7">No employees to display</td>
+                </tr>
+              )}
+            </tbody>
+          </table>
+        </div>
       </div>
     )
   };
 };
 
 export default Table;
+
+// Table headings
+// const nameTh = document.querySelector(".name-th");
+// const firstTh = document.querySelector(".first-th");
+// const lastTh = document.querySelector(".last-th");
+// const imgTh = document.querySelector(".img-th");
+// const dobTh = document.querySelector(".dob-th");
+// const addressTh = document.querySelector(".address-th");
+// const emailTh = document.querySelector(".email-th");
+// const phoneTh = document.querySelector(".phone-th");
+
+// Responsive table headings
+// const nameThMobile = document.querySelector(".name-th-m");
+// const firstThMobile = document.querySelector(".first-th-m");
+// const lastThMobile = document.querySelector(".last-th-m");
+// const imgThMobile = document.querySelector(".img-th-m");
+// const dobThMobile = document.querySelector(".dob-th-m");
+// const addressThMobile = document.querySelector(".address-th-m");
+// const emailThMobile = document.querySelector(".email-th-m");
+// const phoneThMobile = document.querySelector(".phone-th-m");
+

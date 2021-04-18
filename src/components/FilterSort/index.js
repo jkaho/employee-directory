@@ -99,7 +99,7 @@ function FilterSort(props) {
       />
       <div className="sort-filter-div">
       <div className="filter-div">
-        <span>Filter by </span>
+        <span className="span-label">Filter by </span>
         &nbsp;
         <Select
           type="state"
@@ -119,7 +119,7 @@ function FilterSort(props) {
       </div>
       &nbsp;&nbsp;&nbsp;&nbsp;
       <div className="sort-div">
-        <span>Sort by </span>
+        <span className="span-label">Sort by </span>
         &nbsp;
         <Select
             type="sort"

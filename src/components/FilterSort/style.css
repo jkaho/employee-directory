@@ -29,12 +29,16 @@
   border-radius: 3px;
 }
 
+.sort-select {
+  border: 1px solid rgb(163, 163, 163);
+}
+
 .sort-btn {
   width: 30px;
 }
 
 .sort-btn {
-  background: white;
+  background: rgb(247, 245, 245);
   border: 1px solid grey;
   cursor: pointer;
 }
@@ -57,3 +61,33 @@
   color: white;
   border: 1px solid rgb(49, 173, 97);
 }
+
+@media (max-width: 1200px) {
+  .search-sort-filter-div {
+    height: 80px;
+    margin-top: 0;
+  }
+
+  .sort-filter-div {
+    float: none;
+    width: fit-content;
+    margin: 0 auto;
+  }
+}
+
+@media (max-width: 850px) {
+  .search-sort-filter-div {
+    height: 150px;
+  }
+
+  .filter-div, .sort-div {
+    display: block;
+  }
+
+  .sort-div {
+    width: fit-content;
+    margin: 0 auto;
+  }
+
+}
+
