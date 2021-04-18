@@ -338,7 +338,7 @@ class Table extends Component {
 
   render() {
     return (
-      <div>
+      <div className="main-div">
         <FilterSort
           handleNameSearch={this.handleNameSearch}
           handleStateFilterChange={this.handleStateFilterChange}
