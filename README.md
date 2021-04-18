@@ -23,7 +23,7 @@ For user convenience and accessibility, *Employee Directory* is also mobile-frie
 - JSX
 - JavaScript
 - Axios
-- Random User Generator API [randomuser.me](https://randomuser.me/)
+- Random User Generator API ([randomuser.me](https://randomuser.me/))
 - Mark.js 
 - Moment.js
 - CSS 
@@ -46,6 +46,12 @@ For user convenience and accessibility, *Employee Directory* is also mobile-frie
 
 ## Link
 
-Link to deployed application: []()
+Link to deployed application: [jkaho.github.io/employee-directory/](https://jkaho.github.io/employee-directory/)
+
+## Questions
+
+**My GitHub Profile**: [jkaho](https://github.com/jkaho)
+
+If you have any further questions, please feel free to email me at [j.h-7@yahoo.com](mailto:j.h-7@yahoo.com).
 
 
