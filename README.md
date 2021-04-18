@@ -29,6 +29,7 @@ For user convenience and accessibility, *Employee Directory* is also mobile-frie
 - CSS 
 - Google Fonts
 - Font Awesome
+- Canva
 
 # Screenshots 
 
