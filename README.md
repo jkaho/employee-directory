@@ -15,7 +15,7 @@ Additional features:
 - Filter employees by state/territory and/or age group
 - Sort employees by first name, last name or age in ascending or descending order
 
-For user convenience and accessibility, this application is also mobile-friendly.
+For user convenience and accessibility, *Employee Directory* is also mobile-friendly.
 
 ## Technologies Used
 
