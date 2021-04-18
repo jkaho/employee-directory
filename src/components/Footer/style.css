@@ -1,0 +1,15 @@
+footer {
+  width: 100%;
+}
+
+.footer-link-div {
+  width: fit-content;
+  margin: 0 auto;
+  padding-bottom: 10px;
+}
+
+.footer-link-div a {
+  font-size: 14px;
+  text-decoration: none;
+  color: grey;
+}
