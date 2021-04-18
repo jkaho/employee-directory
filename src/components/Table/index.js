@@ -235,6 +235,80 @@ class Table extends Component {
     document.querySelector("#sort-select").value = "none";
   };
 
+  handleLeftBtn = event => {
+    event.stopPropagation();
+    const currentHeading = event.target.parentElement.classList[0];
+    let prevHeading;
+
+    switch(currentHeading) {
+      case "dob":
+        prevHeading = "phone";
+        break;
+      case "address":
+        prevHeading = "dob";
+        break;
+      case "email":
+        prevHeading = "address";
+        break;
+      default:
+        prevHeading = "email";
+        break;
+    }
+
+    const prevHeadingEl = document.querySelector(`.${prevHeading}-th`);
+    const prevDataEls = document.querySelectorAll(`.${prevHeading}-td`);
+    const currentHeadingEl = document.querySelector(`.${currentHeading}-th`);
+    const currentDataEls = document.querySelectorAll(`.${currentHeading}-td`);
+
+    prevHeadingEl.classList.remove("hide-th");
+    currentHeadingEl.classList.add("hide-th");
+
+    prevDataEls.forEach(el => {
+      el.classList.remove("hide-td");
+    });
+
+    currentDataEls.forEach(el => {
+      el.classList.add("hide-td");
+    });
+  }
+
+  handleRightBtn = event => {
+    event.stopPropagation();
+    const currentHeading = event.target.parentElement.classList[0];
+    let nextHeading;
+
+    switch(currentHeading) {
+      case "dob":
+        nextHeading = "address";
+        break;
+      case "address":
+        nextHeading = "email";
+        break;
+      case "email":
+        nextHeading = "phone";
+        break;
+      default:
+        nextHeading = "dob";
+        break;
+    }
+
+    const nextHeadingEl = document.querySelector(`.${nextHeading}-th`);
+    const nextDataEls = document.querySelectorAll(`.${nextHeading}-td`);
+    const currentHeadingEl = document.querySelector(`.${currentHeading}-th`);
+    const currentDataEls = document.querySelectorAll(`.${currentHeading}-td`);
+
+    nextHeadingEl.classList.remove("hide-th");
+    currentHeadingEl.classList.add("hide-th");
+
+    nextDataEls.forEach(el => {
+      el.classList.remove("hide-td");
+    });
+
+    currentDataEls.forEach(el => {
+      el.classList.add("hide-td");
+    });
+  }
+
   abbrievateState = (stateName) => {
     switch(stateName) {
       case "New South Wales":
@@ -270,49 +344,31 @@ class Table extends Component {
           sortEmployeesDesc={this.sortEmployeesDesc}
           removeSort={this.removeSort}
         />
-        {/* <div className="mobile-th">
-          <table className="mobile-table">
-            <thead>
-            <tr>
-                <th className="name-th-m" colSpan="2">NAME</th>
-                <th className="img-th-m" rowSpan="2">PHOTO</th>
-                <th className="dob-th-m" rowSpan="2">DOB</th>
-                <th className="address-th-m" rowSpan="2">ADDRESS</th>
-                <th className="email-th-m" rowSpan="2">EMAIL</th>
-                <th className="phone-th-m" rowSpan="2">MOBILE</th>
-              </tr>
-              <tr>
-                <th className="first-th-m">FIRST</th>
-                <th className="last-th-m">LAST</th>
-              </tr>
-            </thead>
-          </table>
-        </div> */}
         <div className="table-div">
           <table className="employee-table">
             <thead>
               <tr>
-                <th className="name-th th" colSpan="2">NAME</th>
-                <th className="img-th th" rowSpan="2">PHOTO</th>
-                <th className="dob-th th" rowSpan="2">
-                  <button className="th-btn"><i className="fas fa-chevron-left"></i></button>
+                <th id="th-1" className="name name-th th" colSpan="2">NAME</th>
+                <th id="th-2" className="img img-th th" rowSpan="2">PHOTO</th>
+                <th id="th-3" className="dob dob-th th" rowSpan="2">
+                  <button className="dob th-btn" onClick={this.handleLeftBtn}><i className="fas fa-chevron-left"></i></button>
                   DOB
-                  <button className="th-btn"><i className="fas fa-chevron-right"></i></button>
+                  <button className="dob th-btn" onClick={this.handleRightBtn}><i className="fas fa-chevron-right"></i></button>
                 </th>
-                <th className="address-th th" rowSpan="2">
-                  <button className="th-btn"><i className="fas fa-chevron-left"></i></button>
+                <th id="th-4" className="address address-th th hide-th" rowSpan="2">
+                  <button className="address th-btn" onClick={this.handleLeftBtn}><i className="fas fa-chevron-left"></i></button>
                   ADDRESS
-                  <button className="th-btn"><i className="fas fa-chevron-right"></i></button>
+                  <button className="address th-btn" onClick={this.handleRightBtn}><i className="fas fa-chevron-right"></i></button>
                 </th>
-                <th className="email-th th" rowSpan="2">
-                  <button className="th-btn"><i className="fas fa-chevron-left"></i></button>
+                <th id="th-5" className="email email-th th hide-th" rowSpan="2">
+                  <button className="email th-btn" onClick={this.handleLeftBtn}><i className="fas fa-chevron-left"></i></button>
                   EMAIL
-                  <button className="th-btn"><i className="fas fa-chevron-right"></i></button>
+                  <button className="email th-btn hide-th" onClick={this.handleRightBtn}><i className="fas fa-chevron-right"></i></button>
                 </th>
-                <th className="phone-th th" rowSpan="2">
-                  <button className="th-btn"><i className="fas fa-chevron-left"></i></button>
+                <th id="th-6" className="phone phone-th th hide-th" rowSpan="2">
+                  <button className="phone th-btn" onClick={this.handleLeftBtn}><i className="fas fa-chevron-left"></i></button>
                   MOBILE
-                  <button className="th-btn"><i className="fas fa-chevron-right"></i></button>
+                  <button className="phone th-btn" onClick={this.handleRightBtn}><i className="fas fa-chevron-right"></i></button>
                 </th>
               </tr>
               <tr>

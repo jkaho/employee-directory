@@ -73,7 +73,7 @@ tr td:last-child, tr th:last-child {
     display: none;
   } */
 
-  .address-th, .email-th, .phone-th {
+  .hide-th, .hide-td {
     display: none;
   }
 
@@ -89,9 +89,5 @@ tr td:last-child, tr th:last-child {
 
   .first-th, .last-th {
     top: 26px;
-  }
-
-  .address-td, .email-td, .phone-td {
-    display: none;
   }
 }
