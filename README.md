@@ -17,6 +17,13 @@ Additional features:
 
 For user convenience and accessibility, *Employee Directory* is also mobile-friendly.
 
+## Table of Contents
+
+- [Technologies Used](#Technologies-Used)
+- [Screenshots](#Screenshots)
+- [Link to deployed application](#Link)
+- [Questions](#Questions)
+
 ## Technologies Used
 
 - React
@@ -31,17 +38,17 @@ For user convenience and accessibility, *Employee Directory* is also mobile-frie
 - Font Awesome
 - Canva
 
-# Screenshots 
+## Screenshots 
 
-## Large viewport 
+### Large viewport 
 
 ![Screenshot of Employee Tracker on a large viewport (desktop)](public/images/viewport-lg.png)
 
-## Medium viewport 
+### Medium viewport 
 
 ![Screenshot of Employee Tracker on a medium viewport (iPad)](public/images/viewport-md.png)
 
-## Small viewport 
+### Small viewport 
 
 ![Screenshot of Employee Tracker on a small viewport (iPhone)](public/images/viewport-sm.png)
 
