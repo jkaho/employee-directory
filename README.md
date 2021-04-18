@@ -5,7 +5,7 @@
 *Employee Directory* is an application where employers/managers can view a table of non-sensitive employee information, including:
 - Name (first & last)
 - Photo (72x72)
-- Date of Birth 
+- Date of birth 
 - Address
 - Email
 - Mobile number 
@@ -15,7 +15,7 @@ Additional features:
 - Filter employees by state/territory and/or age group
 - Sort employees by first name, last name or age in ascending or descending order
 
-This application is also mobile-friendly for user convenience and accessibility.
+For user convenience and accessibility, this application is also mobile-friendly.
 
 ## Technologies Used
 
@@ -39,7 +39,7 @@ This application is also mobile-friendly for user convenience and accessibility.
 
 ![Screenshot of Employee Tracker on a medium viewport (iPad)](public/images/viewport-md.png)
 
-## Large viewport 
+## Small viewport 
 
 ![Screenshot of Employee Tracker on a small viewport (iPhone)](public/images/viewport-sm.png)
 
