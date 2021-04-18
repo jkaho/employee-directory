@@ -23,6 +23,7 @@ For user convenience and accessibility, *Employee Directory* is also mobile-frie
 - JSX
 - JavaScript
 - Axios
+- Random User Generator API [randomuser.me](https://randomuser.me/)
 - Mark.js 
 - Moment.js
 - CSS 
