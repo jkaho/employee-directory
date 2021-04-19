@@ -47,6 +47,14 @@ tr td:last-child, tr th:last-child {
   border-right: 0;
 }
 
+/* "No employees to display" message */
+#no-employees {
+  text-align: center;
+  padding: 50px;
+  font-size: 30px;
+
+}
+
 /* Left/right mobile th buttons */
 .th-btn {
   display: none;

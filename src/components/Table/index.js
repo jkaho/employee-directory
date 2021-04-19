@@ -398,7 +398,7 @@ class Table extends Component {
                 ))
               ) : (
                 <tr>
-                  <td colSpan="7">No employees to display</td>
+                  <td id="no-employees" colSpan="7">No employees to display <i className="fas fa-exclamation-triangle"></i></td>
                 </tr>
               )}
             </tbody>
