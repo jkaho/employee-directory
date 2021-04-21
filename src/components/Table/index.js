@@ -31,7 +31,7 @@ class Table extends Component {
 
   // Check first & last names for search matches, use Mark.js to highlight matches
   handleNameSearch = event => {
-    this.setState({search: event.target.value.trim()}, () => {
+    this.setState({search: event.target.value.trim().toLowerCase()}, () => {
       this.markInstance = new Mark(document.querySelectorAll(".name-td"));
       this.markInstance.unmark({
         done: () => {
@@ -40,7 +40,7 @@ class Table extends Component {
       });
     });
 
-    const search = event.target.value.trim();
+    const search = event.target.value.trim().toLowerCase();
     if (search !== "" && this.state.results) {
       let searchResults = [];
       employees.results.forEach(result => {
