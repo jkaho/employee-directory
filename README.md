@@ -11,7 +11,7 @@
 - Mobile number 
 
 Additional features: 
-- Search employees by name (*Note: this feature does not currently work on mobile devices*)
+- Search employees by name
 - Filter employees by state/territory and/or age group
 - Sort employees by first name, last name or age in ascending or descending order
 
