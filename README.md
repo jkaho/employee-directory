@@ -11,11 +11,9 @@
 - Mobile number 
 
 Additional features: 
-- Search employees by name
+- Search employees by name (*Note: this feature does not currently work on mobile devices*)
 - Filter employees by state/territory and/or age group
 - Sort employees by first name, last name or age in ascending or descending order
-
-For user convenience and accessibility, *Employee Directory* is also mobile-friendly.
 
 ## Table of Contents
 
